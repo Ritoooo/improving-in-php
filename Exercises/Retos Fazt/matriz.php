@@ -73,6 +73,20 @@ class ExampleTest extends TestCase
         return array_column(array_slice($this->board(), $row, 4), $column);
     }
 
+    /** @test */
+    public function it_returns_a_group_with_below_if_possible()
+    {
+        // Act
+        $group1 = $this->getBelow(0, 0);
+        $group2 = $this->getBelow(3, 4);
+        $group3 = $this->getBelow(16, 9);
+
+        // Assert
+        $this->assertEquals($group1, [8, 49, 81, 52]);
+        $this->assertEquals($group2, [4, 51, 99, 64]);
+        $this->assertEquals($group3, [94, 62, 31, 92]);
+    }
+
     public function getRight(int $i, int $j)
     {
         return array_slice($this->board()[$i], $j, 4);
