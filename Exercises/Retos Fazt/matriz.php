@@ -77,4 +77,18 @@ class ExampleTest extends TestCase
     {
         return array_slice($this->board()[$i], $j, 4);
     }
+
+    /** @test */
+    public function it_returns_a_group_on_the_right_if_possible()
+    {
+        // Act
+        $group1 = $this->getRight(0, 0);
+        $group2 = $this->getRight(0, 16);
+        $group3 = $this->getRight(3, 10);
+
+        // Assert
+        $this->assertEquals($group1, [8, 2, 22, 97]);
+        $this->assertEquals($group2, [50, 77, 91,  8]);
+        $this->assertEquals($group3, [68, 56,  1, 32]);
+    }
 }
